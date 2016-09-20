@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <form class="form-horizontal" ng-submit="registrar(nuevoRegistro)">
+    <h2 style="font-family:'cursive'">appVentas</h2>
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail3" placeholder="Correo electrónico" ng-model="nuevoRegistro.email" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputText3" class="col-sm-2 control-label">Nombre</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="Nombre Completo" ng-model="nuevoRegistro.nombre" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputText3" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="Nombre de usuario" ng-model="nuevoRegistro.username" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="nuevoRegistro.password" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Registrarme</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ul>
+  <li ng-repeat="usuario in registros">
+    {{usuario.username}}--{{usuario.password}}<a href="" ng-click="eliminarItem(usuario)" style="color:red;">X</a>
+  </li>
+</ul>
