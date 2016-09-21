@@ -8,18 +8,22 @@
  * Controller of the appVentasApp
  */
 angular.module('appVentasApp')
-  .controller('MainCtrl', function ($scope,$http) {
-    $scope.nombreArticulos = [];
-    $http.get("https://api.github.com/users/macaja/repos")
-    .success(function(data){
-      //swal("Success", "Se obtuvieron los registros exitosamente", "success");
-      $scope.articulos = data;
-      for(var i = data.length -1;i>=0;i--){
-        var repo = data[i];
-        $scope.repositorios.push(repo.name);
-      }
-    })
-    .error(function(err){
-      swal("ERROR!", "Error al obtener recurso.", "error");
-    });
+  .controller('MainCtrl', function ($scope,$http,ArticuloService) {
+    $scope.articulos = ArticuloService.obtenerTodos();
+    $scope.nuevoArticulo = {};
+    $scope.nuevoArticulo.id = $scope.articulos.length + 1;
+    $scope.ingresarArticulo = function(){
+      ArticuloService.ingresar($scope.nuevoArticulo);
+      swal("Bien","El articulo se ingresado exitosamente", "success");
+      $scope.nuevoArticulo = {};
+    }
+    $scope.categorias = [
+        {nombre : "Vehiculos"},
+        {nombre : "Inmuebles"},
+        {nombre : "Telefonos"},
+        {nombre : "Computadores"},
+        {nombre : "Videojuegos"},
+        {nombre : "Deportes"},
+        {nombre : "Ropa"}
+    ];
   });

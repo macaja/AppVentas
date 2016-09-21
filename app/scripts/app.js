@@ -30,7 +30,7 @@ angular
         controller: 'RegistroCtrl',
         controllerAs: 'registro'
       })
-      .when('/articulo/:name', {
+      .when('/articulo/:nombre/:id', {
         templateUrl: 'views/articulo.html',
         controller: 'ArticuloCtrl',
         controllerAs: 'articulo'

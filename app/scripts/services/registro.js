@@ -9,7 +9,7 @@
  */
 angular.module('appVentasApp')
   .factory('RegistroService', function (localStorageService) {
-    var registroService = {};
+      var registroService = {};
       registroService.key = "angular-registros";
       if(localStorageService.get(registroService.key)){
         registroService.registros = localStorageService.get(registroService.key);
