@@ -21,6 +21,7 @@
   <button type="submit" class="btn btn-primary">Ingresar</button>
 </form>
 </div><br>
+<!-- Este es el código anterior que los ubicaba en la mitad
 <div class="row">
     <div class="small-10 column">
     </div>
@@ -29,7 +30,19 @@
         <div class="panel text-center">
             <img class="circle" ng-src="{{articulo.imagen}}">
             <h3 class="ellipsis">{{articulo.nombre}}</h3>
+            <h4>{{articulo.precio}}</h4>
         </div>
         </a>
+    </div>
+</div>
+-->
+
+<div class="cuadroArticulo" ng-repeat="articulo in articulos">
+    <div class="panel text-center">
+        <a href="#/articulo/{{articulo.nombre}}/{{articulo.id}}">
+        <img class="circle" ng-src="{{articulo.imagen}}">
+        <h3 >{{articulo.nombre}}</h3>
+      </a>
+        <h4>{{articulo.precio | currency}}</h4>
     </div>
 </div>

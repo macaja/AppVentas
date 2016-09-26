@@ -101,3 +101,13 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
+.cuadroArticulo{
+    width:300px;
+    height:300px;
+    float:left;
+}
+
+.infoArticulo{
+  width:600px;
+  height:600px;
+}
