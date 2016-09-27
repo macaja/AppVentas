@@ -9,5 +9,7 @@
  */
 angular.module('appVentasApp')
   .controller('ArticuloCtrl', function ($scope,$http,$routeParams,ArticuloService) {
+    $scope.articulo = ArticuloService.consultarArticulo($routeParams.id);
+    console.log($scope.articulo.nombre);
     $scope.nombre = $routeParams.nombre;
   });

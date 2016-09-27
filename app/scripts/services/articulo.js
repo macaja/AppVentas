@@ -8,7 +8,7 @@
  * Factory in the appVentasApp.
  */
 angular.module('appVentasApp')
-  .factory('ArticuloService', function (localStorageService) {
+  .factory('ArticuloService', function (localStorageService,$http) {
     var articuloService = {};
     articuloService.key = "angular-articulos";
     if(localStorageService.get(articuloService.key)){
@@ -37,15 +37,16 @@ angular.module('appVentasApp')
       articuloService.articulos = [];
       articuloService.actualizarLocalStorage();
     }
+    articuloService.insertar = function(nuevoArticulo){
+      return $http.post('usuarios/registros',nuevoArticulo);
+    }
     articuloService.consultarArticulo = function(id){
       var articulo = {};
       var lon = articuloService.articulos.length;
       for(var i = 0;i<lon;i++ ){
         if(id === articuloService.articulos[i].id){
-          articulo.nombre = articuloService.articulos[i].nombre;
-          articulo.imagen = articuloService.articulos[i].imagen;
-          articulo.descripcion = articuloService.articulos[i].descripcion;
-          articulo.precio = articuloService.articulos[i].precio;
+          articulo = articuloService.articulos[i];
+          break;
         }else{
           continue;
         }

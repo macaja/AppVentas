@@ -14,7 +14,7 @@ angular.module('appVentasApp')
     $scope.nuevoArticulo.id = $scope.articulos.length + 1;
     $scope.ingresarArticulo = function(){
       ArticuloService.ingresar($scope.nuevoArticulo);
-      swal("Bien","El articulo se ingresado exitosamente", "success");
+			swal("Articulo insertado!", "El articulo se ha insertado satisfactoriamente.", "success");
       $scope.nuevoArticulo = {};
     }
     $scope.categorias = [
