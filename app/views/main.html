@@ -29,6 +29,7 @@
       <a href="#/articulo/{{articulo.nombre}}/{{articulo.id}}">
         <div class="panel text-center">
             <img class="circle" ng-src="{{articulo.imagen}}">
+            <h3>{{articulo.precio | currency}}</h3>
             <h3 class="ellipsis">{{articulo.nombre}}</h3>
             <h4>{{articulo.precio}}</h4>
         </div>
