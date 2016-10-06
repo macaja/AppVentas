@@ -1,7 +1,5 @@
-<div class="row">
-
-<div class="col-xs-4">
-  <form class="form-horizontal" ng-submit="ingresarArticulo(nuevoArticulo)">
+<div >
+  <form class="form-inline" ng-submit="ingresarArticulo()">
   <input type="hidden" ng-model="nuevoArticulo.id" >
   <div class="form-group">
     <input type="text" class="form-control"  ng-model="nuevoArticulo.nombre" placeholder="Nombre del articulo">
@@ -29,6 +27,7 @@
       <a href="#/articulo/{{articulo.nombre}}/{{articulo.id}}">
         <div class="panel text-center">
             <img class="circle" ng-src="{{articulo.imagen}}">
+            <h3>{{articulo.precio | currency}}</h3>
             <h3 class="ellipsis">{{articulo.nombre}}</h3>
             <h4>{{articulo.precio}}</h4>
         </div>
