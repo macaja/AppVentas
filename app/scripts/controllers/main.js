@@ -9,7 +9,13 @@
  */
 angular.module('appVentasApp')
   .controller('MainCtrl', function ($scope,$http,ArticuloService) {
-    $scope.articulos = ArticuloService.obtenerTodos();
+    $scope.articulos = [];
+    $http.get('http://localhost:9000/articulos').then(function(response){
+      $scope.articulos = response.data;
+      swal("Articulos de bd", "Se obtuvieron los datos", "success");
+    },function(response){
+      swal("Error", "NO se pudo obtener articulos", "error");
+    });
     $scope.nuevoArticulo = {};
     $scope.nuevoArticulo.id = $scope.articulos.length + 1;
     $scope.ingresarArticulo = function(){
