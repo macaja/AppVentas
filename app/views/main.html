@@ -1,22 +1,22 @@
 <div >
-  <form class="form-inline" ng-submit="ingresarArticulo()">
-  <input type="hidden" ng-model="nuevoArticulo.id" >
+  <form data-toggle="validator" class="form-inline" ng-submit="ingresarArticulo()" role="form">
   <div class="form-group">
-    <input type="text" class="form-control"  ng-model="nuevoArticulo.nombre" placeholder="Nombre del articulo">
+    <input type="text" class="form-control"  ng-model="nuevoArticulo.nombre" placeholder="Nombre del articulo" >
   </div>
   <div class="form-group">
-    <select class="form-control" ng-model="nuevoArticulo.categoria" ng-options="x.nombre for x in categorias">
-      <option value="" disabled selected>categorias</option>
-    </select>
+    <input type="text" class="form-control" ng-model="nuevoArticulo.precio" placeholder="Precio" >
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" ng-model="nuevoArticulo.imagen" placeholder="Url de la imagen">
+    <input type="text" class="form-control" ng-model="nuevoArticulo.descripcion" placeholder="Descripcion" >
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" ng-model="nuevoArticulo.descripcion" placeholder="Descripcion">
+    <input type="text" class="form-control" ng-model="nuevoArticulo.imagen" placeholder="Url de la imagen" >
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" ng-model="nuevoArticulo.precio" placeholder="Precio">
+    <input type="text" class="form-control" ng-model="nuevoArticulo.cantidad" placeholder="Cantidad del articulo" >
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="nuevoArticulo.categoria" placeholder="Categoria"    >
   </div>
   <button type="submit" class="btn btn-primary">Ingresar</button>
 </form>
@@ -25,8 +25,10 @@
     <div class="panel text-center">
         <a href="#/articulo/{{articulo.nombre}}/{{articulo.id}}">
         <img class="circle" ng-src="{{articulo.imagen}}">
+        <span class="tag tag-pill tag-success">{{articulo.cantidad}}</span>
         <h3 >{{articulo.nombre}}</h3>
       </a>
+
         <h4>{{articulo.precio | currency}}</h4>
     </div>
 </div>
