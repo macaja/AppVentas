@@ -1,5 +1,5 @@
 
-  <form class="form-horizontal" ng-submit="registrar(nuevoRegistro)">
+  <form class="" ng-submit="registrarUsuario()">
     <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
@@ -8,24 +8,19 @@
                     <hr>
                     <fieldset>
                         <div class="form-group has-error">
-                            <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="text" required>
+                            <input class="form-control input-lg" ng-model="nuevoRegistro.username" placeholder="Username"  type="text" required>
                         </div>
                         <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Password" name="password" value="" type="password" required>
+                          <input  class="form-control input-lg" ng-model="nuevoRegistro.password " placeholder="Password"  value="" type="password" required>
                         </div>
                         <div class="form-group has-success">
-                            <input class="form-control input-lg" placeholder="Confirm Password" name="password" value="" type="password" required>
+                            <input  class="form-control input-lg" ng-model="nuevoRegistro.confirmPassword " placeholder="Confirm Password" type="password" required>
                         </div>
+                        <div ng-show="validar" style="color:red">Las contraseñas no coindiden</div>
                         <input class="btn btn-lg btn-primary btn-block" value="Registrarme" type="submit">
                     </fieldset>
                 </div>
         </div>
     </div>
-</div>
-  </form>
-
-<ul>
-  <li ng-repeat="usuario in registros">
-    {{usuario.username}}--{{usuario.password}}<a href="" ng-click="eliminarItem(usuario)" style="color:red;">X</a>
-  </li>
-</ul>
+  </div>
+</form>

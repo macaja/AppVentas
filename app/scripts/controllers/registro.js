@@ -8,24 +8,28 @@
  * Controller of the appVentasApp
  */
 angular.module('appVentasApp')
-  .controller('RegistroCtrl', function ($scope,RegistroService) {
-      $scope.registros = RegistroService.obtenerTodos();
-      $scope.registrar = function(){
-        var existe = RegistroService.existeUsuario($scope.nuevoRegistro.username);
-        if(existe == false){
-          RegistroService.registrar($scope.nuevoRegistro);
-          swal("Bien","Usuario ingresado exitosamente", "success");
+  .controller('RegistroCtrl', function ($scope,$http,RegistroService) {
+      //$scope.registros = RegistroService.obtenerTodos();
+      $scope.validar = false;
+      $scope.registrarUsuario = function(){
+        if($scope.nuevoRegistro.password == $scope.nuevoRegistro.confirmPassword){
+          var data = {
+              username:$scope.nuevoRegistro.username,
+              password:$scope.nuevoRegistro.password
+          }
+          $http.post('http://localhost:9000/usuarios/registrarUsuario',data)
+          .success(function(response){
+              swal(response.status, response.message , "success");
+              console.log(data.statusText);
+              $scope.nuevoRegistro = {};
+              $scope.validar = false;
+          })
+          .error(function(response){
+            swal(response.status, response.message, "error");
+          });
         }else{
-          swal("Ohh!","El usuario ya existe", "error");
+          $scope.validar = true;
         }
-        $scope.nuevoRegistro = {};
-      }
-      $scope.eliminarItem = function(item){
-        $scope.registros = RegistroService.eliminarRegistro(item);
-      }
-      $scope.eliminarTodos = function(){
-        RegistroService.eliminarTodos();
-        $scope.registros = RegistroService.obtenerTodos();
-  			swal("Bien","Se eliminaron los registros", "success");
+
       }
   });

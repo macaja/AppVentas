@@ -15,7 +15,7 @@ angular.module('appVentasApp')
       $scope.articulos = response.data;
       swal("Articulos de bd", "Se obtuvieron los datos", "success");
     },function(response){
-      swal("Error", "NO se pudo obtener articulos", "error");
+      swal("Error", "No se pudo obtener articulos", "error");
     });
     $scope.ingresarArticulo = function(){
       var data = {
@@ -27,11 +27,11 @@ angular.module('appVentasApp')
           categoria:$scope.nuevoArticulo.categoria
       }
       $http.post('http://localhost:9000/articulos/agregarArticulo',data)
-      .success(function(articulo,status,headers){
+      .success(function(response){
           swal("Articulo insertado!", "El articulo se ha insertado satisfactoriamente.", "success");
           $scope.nuevoArticulo = {};
       })
-      .error(function(articulo,status,header){
+      .error(function(response){
         swal("ERROR", "No se ha podido ingresar el articulo correctamente", "error");
       });
 
